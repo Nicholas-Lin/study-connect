@@ -1,5 +1,3 @@
-import django_heroku
-
 """
 Django settings for mysite project.
 
@@ -134,7 +132,7 @@ AUTHENTICATION_BACKENDS = (
  'allauth.account.auth_backends.AuthenticationBackend',
  )
 
-SITE_ID = 2
+SITE_ID = 3
 LOGIN_REDIRECT_URL = '/'
 
 SOCIALACCOUNT_PROVIDERS = {
@@ -150,4 +148,9 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 # Activate Django-Heroku.
-django_heroku.settings(locals())
+try:
+    # Configure Django App for Heroku.
+    import django_heroku
+    django_heroku.settings(locals())
+except ImportError:
+    found = False
