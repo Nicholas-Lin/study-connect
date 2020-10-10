@@ -10,7 +10,7 @@ class Course(models.Model):
     class_topic_formal_desc = models.CharField(max_length=500)
     instructor = models.CharField(max_length=50)
     enrollment_capacity = models.PositiveSmallIntegerField()
-    meeting_days = models.CharField(max_length=5)
+    meeting_days = models.CharField(max_length=7)
     meeting_time_start = models.CharField(max_length=10)
     meeting_time_end = models.CharField(max_length=10)
     term = models.CharField(max_length=10)
