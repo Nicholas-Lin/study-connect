@@ -1,19 +1,25 @@
+{% extends 'base.html'%}
 {% load socialaccount %}
-<html>
 
-<head>
-    <title>Google Registration</title>
-</head>
+{% block content%}
+<div class="container">
+    <div class="d-flex align-items-center flex-column  justify-content-center login">
+        {% if user.is_authenticated %}
+        <h1>Welcome, {{ user.first_name }} !</h1>
+        <button class="btn btn-primary">
+            <a href="/accounts/logout">Log Out</a>
+        </button>
 
-<body>
-    {% if user.is_authenticated %}
-    <p>Welcome, {{ user.username }} !</p>
+        {% else %}
 
-    {% else %}
-    <h1>My Google Login Project</h1>
-    <a href="{% provider_login_url 'google' %}">Login with Google</a>
-    {% endif %}
-
-</body>
-
-</html>
+        <header>Study Connect </header>
+        <header class=" mt-5">📓✏️</header>
+        <button type="button" class="btn btn-success submit-button mt-5">
+            <a href="{% provider_login_url 'google' %}">Login with Google</a>
+        </button>
+        <h4 class="mt-5">Find your next study group.</h4>
+        <h6 class="mt-5">Created by TheStudyBuddies</h6>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

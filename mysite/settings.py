@@ -147,6 +147,12 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/3.1/howto/static-files/
+
+STATIC_URL = '/static/'
+ACCOUNT_LOGOUT_ON_GET = True #Skip intermediate allauth log out page
+
 # Activate Django-Heroku.
 try:
     # Configure Django App for Heroku.
