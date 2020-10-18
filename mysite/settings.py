@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'allauth.account',  
     'allauth.socialaccount',   
     'allauth.socialaccount.providers.google',
-    'crispy_forms',
+    #'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -158,7 +158,7 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+#CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 ACCOUNT_LOGOUT_ON_GET = True #Skip intermediate allauth log out page
 
