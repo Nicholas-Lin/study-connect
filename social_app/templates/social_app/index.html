@@ -2,16 +2,20 @@
 {% load socialaccount %}
 
 {% block content%}
+
+
+{% if user.is_authenticated %}
+{% include 'navbar.html'%}
+<div class="container">
+    <div class="d-flex align-items-center flex-column  justify-content-center">
+        <h1>Welcome, {{ user.first_name }} !</h1>
+    </div>
+</div>
+
+
+{% else %}
 <div class="container">
     <div class="d-flex align-items-center flex-column  justify-content-center login">
-        {% if user.is_authenticated %}
-        <h1>Welcome, {{ user.first_name }} !</h1>
-        <button class="btn btn-primary">
-            <a href="/accounts/logout">Log Out</a>
-        </button>
-
-        {% else %}
-
         <header>Study Connect </header>
         <header class=" mt-5">📓✏️</header>
         <button type="button" class="btn btn-success submit-button mt-5">
