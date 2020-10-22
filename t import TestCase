@@ -1,0 +1,240 @@
+[33mcommit d2d116ccf47332d358402cf097ea053304790095[m[33m ([m[1;36mHEAD -> [m[1;32mfeature-profile-page[m[33m)[m
+Merge: 6ff577f 21c72d1
+Author: James Powell <jlpowellv74@gmail.com>
+Date:   Thu Oct 22 16:57:53 2020 -0400
+
+    going back to beginning of testing
+
+[33mcommit 6ff577fe1bfb369da8461d97687aafecab2c2baa[m
+Author: James Powell <jlpowellv74@gmail.com>
+Date:   Thu Oct 22 16:44:08 2020 -0400
+
+    going back to beginning of testing
+
+[33mcommit 21c72d19738097e3a62499104b96aa358f1dbdea[m[33m ([m[1;31morigin/feature-profile-page[m[33m)[m
+Author: Nicholas Lin <nicholaslin10@gmail.com>
+Date:   Thu Oct 22 16:37:39 2020 -0400
+
+    Suppressing Travi CI error
+
+[33mcommit e0921b07c0ea375902c280bf13407b6b675c4cf8[m
+Merge: 88d1e7f 9060c5b
+Author: Nicholas Lin <nicholaslin10@gmail.com>
+Date:   Thu Oct 22 16:16:10 2020 -0400
+
+    Merge remote-tracking branch 'origin/master' into feature-profile-page
+
+[33mcommit 88d1e7f9b8e335e53165bf2964e756302976f363[m
+Author: Nicholas Lin <nicholaslin10@gmail.com>
+Date:   Thu Oct 22 16:15:25 2020 -0400
+
+    Added test case
+
+[33mcommit 9060c5b8040e44fb197d20b2aa765ea9c0ea2967[m[33m ([m[1;31morigin/testing_check4[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mtesting_check4[m[33m)[m
+Merge: 15ddcc4 b3370d1
+Author: Nicholas Lin <55355670+Nicholas-Lin@users.noreply.github.com>
+Date:   Thu Oct 22 12:03:26 2020 -0400
+
+    Merge pull request #8 from uva-cs3240-f20/course-model
+    
+    Modified Course model for API
+
+[33mcommit 15ddcc440c8e816f8d765c3ceb73cab4620652ad[m
+Merge: 2f04189 b4fd9d0
+Author: ezberg2 <59938558+ezberg2@users.noreply.github.com>
+Date:   Thu Oct 22 11:49:36 2020 -0400
+
+    Merge pull request #9 from uva-cs3240-f20/add_courses
+    
+    added two more course fields and made 1st required
+
+[33mcommit b4fd9d05a099ae9c9e05425e305381fefbe6d1f2[m[33m ([m[1;31morigin/add_courses[m[33m)[m
+Author: Ezra Berg <ezraberg@gmail.com>
+Date:   Thu Oct 22 08:39:24 2020 -0700
+
+    added two more course fields and made 1st required
+
+[33mcommit b3370d1d531c02b03f6c779f758c849c9694498f[m[33m ([m[1;31morigin/course-model[m[33m)[m
+Merge: 3da5817 2f04189
+Author: Nicholas Lin <nicholaslin10@gmail.com>
+Date:   Thu Oct 22 11:35:36 2020 -0400
+
+    Merge remote-tracking branch 'origin/master' into course-model
+
+[33mcommit 3da5817cd29cc11019b7af25b5f90fffc97cdf09[m
+Author: Nicholas Lin <nicholaslin10@gmail.com>
+Date:   Thu Oct 22 11:25:09 2020 -0400
+
+    Modified Course model for API
+
+[33mcommit 2f041892ea4fe413771007f41ac5e3bbfbd64b83[m
+Merge: 0e4185a 7e57a6d
+Author: ezberg2 <59938558+ezberg2@users.noreply.github.com>
+Date:   Wed Oct 21 22:37:39 2020 -0400
+
+    Merge pull request #7 from uva-cs3240-f20/add_courses
+    
+    include classes in profile form and changed headers
+
+[33mcommit 7e57a6d137b8752987ab78e15ee5dcddc83b3186[m
+Author: Ezra Berg <ezraberg@gmail.com>
+Date:   Wed Oct 21 19:24:44 2020 -0700
+
+    include classes in profile form and changed headers
+
+[33mcommit 0e4185a3463ef2195966955f5d6ad347cda9c5c2[m[33m ([m[1;32mmaster[m[33m)[m
+Merge: 3f8220d 5981310
+Author: Nicholas Lin <55355670+Nicholas-Lin@users.noreply.github.com>
+Date:   Wed Oct 21 16:51:27 2020 -0400
+
+    Merge pull request #6 from uva-cs3240-f20/feature-profile-page
+    
+    Expanded profile model & Added form
+
+[33mcommit 59813102e0e6362ee45f6a5ac250fc62f0b49097[m
+Author: Nicholas Lin <nicholaslin10@gmail.com>
+Date:   Mon Oct 19 21:07:02 2020 -0400
+
+    Added crispy forms to requirements
+
+[33mcommit 48fe675a4a3032c32da6d91bca075ae507d6f32f[m
+Author: Nicholas Lin <nicholaslin10@gmail.com>
+Date:   Mon Oct 19 21:01:01 2020 -0400
+
+    Expanded profile model, added crispy profile form
+
+[33mcommit 3f8220df8a539a4402c4e01d6c33cf8189777675[m
+Merge: 346c1aa ddff856
+Author: Nicholas Lin <55355670+Nicholas-Lin@users.noreply.github.com>
+Date:   Sun Oct 18 20:39:40 2020 -0400
+
+    Merge pull request #5 from uva-cs3240-f20/feature-profile-page
+    
+    Added profile page and profile associated with user model
+
+[33mcommit ddff85680ef270da7f248e736e9748310d2dbb58[m
+Author: Nicholas Lin <nicholaslin10@gmail.com>
+Date:   Sun Oct 18 20:09:36 2020 -0400
+
+    Removed profile pictures
+
+[33mcommit e90e2c1be78e066f4685cf6a3f75ac46c119bae5[m
+Author: Nicholas Lin <nicholaslin10@gmail.com>
+Date:   Sun Oct 18 18:14:23 2020 -0400
+
+    Removed crispy forms
+
+[33mcommit e67fc8f49cb686d523dcb429d0f07c8484d57478[m
+Author: Nicholas Lin <nicholaslin10@gmail.com>
+Date:   Sun Oct 18 18:03:48 2020 -0400
+
+    Update travis requirements
+
+[33mcommit 7df6692e92a23e7691767a5025d4e2afad47cb12[m
+Author: Nicholas Lin <nicholaslin10@gmail.com>
+Date:   Sun Oct 18 18:00:41 2020 -0400
+
+    Fixed bug so that it creates profile for existing users
+
+[33mcommit b8bed9d146d3a72ecfe866a7af669866cccbd2c2[m
+Author: Nicholas Lin <nicholaslin10@gmail.com>
+Date:   Sun Oct 18 17:55:09 2020 -0400
+
+    Added basic profile, added login alerts
+
+[33mcommit 346c1aaca31dc29b429a68719ca3fbc810d5fcb0[m
+Merge: 6cc697b 350eb55
+Author: Nicholas Lin <55355670+Nicholas-Lin@users.noreply.github.com>
+Date:   Sun Oct 18 15:00:56 2020 -0400
+
+    Merge pull request #4 from uva-cs3240-f20/feature-profile-page
+    
+    Created users app, moved login page from social app to user app
+
+[33mcommit 350eb55ff22b3802006cc19f56797914457fea95[m
+Author: Nicholas Lin <nicholaslin10@gmail.com>
+Date:   Sun Oct 18 14:51:32 2020 -0400
+
+    Changed redirect url from "/login" to "login"
+
+[33mcommit db219eb32043358f91acac95399e6551057b3632[m
+Author: Nicholas Lin <nicholaslin10@gmail.com>
+Date:   Sun Oct 18 14:47:58 2020 -0400
+
+    Created users app and moved login page from social_app to users app
+
+[33mcommit 6cc697bb14bc647a361a54f26269a74c5cd7fc08[m
+Merge: 89f4b5b d55e436
+Author: Nicholas Lin <55355670+Nicholas-Lin@users.noreply.github.com>
+Date:   Sat Oct 17 23:09:45 2020 -0400
+
+    Merge pull request #3 from uva-cs3240-f20/improvement-logout
+    
+    Added navbar
+
+[33mcommit d55e43684c4b00e3e0e1ab3c9533b223bdc34297[m[33m ([m[1;31morigin/improvement-logout[m[33m)[m
+Author: Nicholas Lin <nicholaslin10@gmail.com>
+Date:   Sat Oct 17 23:08:10 2020 -0400
+
+    Added navbar
+
+[33mcommit 89f4b5b72deb0d6b161da3101301253421b67eeb[m
+Merge: 1bb6d54 1a21f92
+Author: Nicholas Lin <55355670+Nicholas-Lin@users.noreply.github.com>
+Date:   Sat Oct 17 16:13:23 2020 -0400
+
+    Merge pull request #2 from uva-cs3240-f20/improvement-logout
+    
+    Improvement logout
+
+[33mcommit 1a21f9222fdf7984969702e3e57953165d3b053d[m
+Author: Nicholas Lin <nicholaslin10@gmail.com>
+Date:   Sat Oct 17 15:48:20 2020 -0400
+
+    Added styling & removed intermediate allauth log out
+
+[33mcommit 7ccd34e0a77b43980c849dfef5088f29c20231c0[m
+Author: Nicholas Lin <nicholaslin10@gmail.com>
+Date:   Fri Oct 16 23:30:00 2020 -0400
+
+    Added logout link
+
+[33mcommit 1bb6d54de17700b1125ff8d7994cad8718e00155[m
+Author: Samer Kadih <samerkadoosh@hotmail.com>
+Date:   Sat Oct 10 13:06:54 2020 -0400
+
+    Expanded length of meeting days in course model
+
+[33mcommit 5900a9335485bfa29854ffd6762f6849c0c454f4[m
+Author: Samer Kadih <samerkadoosh@hotmail.com>
+Date:   Sat Oct 10 12:47:50 2020 -0400
+
+    Makemigrations for expanded char field
+
+[33mcommit e24b36acaae3226183a8d0394dc5bc77aef41fea[m
+Author: Samer Kadih <samerkadoosh@hotmail.com>
+Date:   Sat Oct 10 12:08:14 2020 -0400
+
+    Updated course model to account for longer class section lengths
+
+[33mcommit 85e5a255c2db4c7bba056699415517edba076b47[m
+Author: Samer Kadih <samerkadoosh@hotmail.com>
+Date:   Sat Oct 10 11:55:35 2020 -0400
+
+    Added Course model
+    
+    Added course model to hold information about courses at UVA, as well as registered it to the admin site so that it is visible in the database.
+
+[33mcommit 33d2061cd227f9e6830e7cb07027e2d4611a211e[m
+Author: Nicholas Lin <nicholaslin10@gmail.com>
+Date:   Fri Oct 9 14:32:17 2020 -0400
+
+    Change site ID to 2
+
+[33mcommit d38bad77512de48c12dbe66d6c2cc455626dc75e[m
+Author: Samer Kadih <samerkadoosh@hotmail.com>
+Date:   Thu Oct 8 13:38:17 2020 -0400
+
+    Travis and Mac Implementation
+    
+    Implements Travis-CI and fixes an error with deploying to heroku on mac machines
