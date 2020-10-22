@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -38,12 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'social_app',
+    'social_app.apps.SocialAppConfig',
+    'users.apps.UsersConfig',
 
     'allauth', 
     'allauth.account',  
     'allauth.socialaccount',   
     'allauth.socialaccount.providers.google',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -133,7 +136,8 @@ AUTHENTICATION_BACKENDS = (
  )
 
 SITE_ID = 2
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'profile'
+LOGIN_URL = 'login'
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
@@ -149,8 +153,14 @@ SOCIALACCOUNT_PROVIDERS = {
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+#CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 ACCOUNT_LOGOUT_ON_GET = True #Skip intermediate allauth log out page
 
 # Activate Django-Heroku.

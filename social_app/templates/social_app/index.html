@@ -1,11 +1,11 @@
-{% extends 'base.html'%}
+{% extends 'social_app/base.html'%}
 {% load socialaccount %}
 
 {% block content%}
 
 
 {% if user.is_authenticated %}
-{% include 'navbar.html'%}
+{% include 'social_app/navbar.html'%}
 <div class="container">
     <div class="d-flex align-items-center flex-column  justify-content-center">
         <h1>Welcome, {{ user.first_name }} !</h1>
@@ -16,14 +16,9 @@
 {% else %}
 <div class="container">
     <div class="d-flex align-items-center flex-column  justify-content-center login">
-        <header>Study Connect </header>
-        <header class=" mt-5">📓✏️</header>
-        <button type="button" class="btn btn-success submit-button mt-5">
-            <a href="{% provider_login_url 'google' %}">Login with Google</a>
-        </button>
-        <h4 class="mt-5">Find your next study group.</h4>
-        <h6 class="mt-5">Created by TheStudyBuddies</h6>
-        {% endif %}
+        <header>This shouldn't be here</header>
+
     </div>
 </div>
+{% endif %}
 {% endblock %}
