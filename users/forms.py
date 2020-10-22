@@ -10,7 +10,7 @@ class UserUpdateForm(forms.ModelForm):
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model=Profile
-        fields = ['major', 'year_in_school','course_1','course_2','course_3','course_4']
+        fields = ['major', 'year_in_school','course_1','course_2','course_3','course_4','course_5','course_6']
         labels = {
         'major': 'Major',
         'year_in_school': 'Year in School',
@@ -18,4 +18,6 @@ class ProfileUpdateForm(forms.ModelForm):
         'course_2': 'course 2 (formatted as: CS2150)',
         'course_3': 'course 3 (formatted as: CS2150)',
         'course_4': 'course 4 (formatted as: CS2150)',
+        'course_5': 'course 5 (formatted as: CS2150)',
+        'course_6': 'course 6 (formatted as: CS2150)',
         }
