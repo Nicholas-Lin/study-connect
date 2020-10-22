@@ -21,6 +21,11 @@ class Profile(models.Model):
         blank = True,
     )
 
+    course_1 = models.CharField(max_length=50, blank = True)
+    course_2 = models.CharField(max_length=50, blank = True)
+    course_3 = models.CharField(max_length=50, blank = True)
+    course_4 = models.CharField(max_length=50, blank = True)
+
 
 
     def __str__(self):
