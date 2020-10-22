@@ -166,7 +166,8 @@ ACCOUNT_LOGOUT_ON_GET = True #Skip intermediate allauth log out page
 # Activate Django-Heroku.
 try:
     # Configure Django App for Heroku.
-    import django_heroku
-    django_heroku.settings(locals())
+    if '/app' in os.environ['HOME']:
+        import django_heroku
+        django_heroku.settings(locals())
 except ImportError:
     found = False
