@@ -1,0 +1,20 @@
+{% extends 'social_app/base.html'%}
+{% block content %}
+{% include 'social_app/navbar.html'%}
+<div class="content-section">
+    <div class="row">
+        <div class="col-md-6 m-auto">
+            <div>{{ object.user.first_name }} {{ object.user.last_name }}</div>
+            <div>Major: {{ object.major }}</div>
+
+            <p>Bio: {{object.bio}}</p>
+        </div>
+        {% if object.user == user%}
+        <div>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'profile-edit' %}">Edit Profile</a>
+        </div>
+        {% endif %}
+    </div>
+
+</div>
+{% endblock content %}

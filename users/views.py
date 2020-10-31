@@ -2,8 +2,11 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import UserUpdateForm, ProfileUpdateForm
 from django.contrib import messages
+from django.views.generic import DetailView
+from .models import Profile
 
 # Create your views here.
+
 def login(request):
     return render(request, 'users/login.html')
 
@@ -16,7 +19,7 @@ def profile(request):
             u_form.save()
             p_form.save()
         messages.success(request, f'Your account has been updated!')
-        return redirect('profile') # start GET request
+        return redirect('profile-edit') # start GET request
     else:
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=request.user.profile)
@@ -28,3 +31,11 @@ def profile(request):
     }
 
     return render(request, 'users/profile.html', context)
+
+class ProfileDetailView(DetailView):
+    model = Profile
+
+    def get_slug_field(self):
+        return 'user__username'
+    
+    
