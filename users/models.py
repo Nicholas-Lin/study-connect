@@ -20,6 +20,7 @@ class Profile(models.Model):
         choices=YEAR_IN_SCHOOL_CHOICES,
         blank = True,
     )
+    bio = models.TextField(max_length=150, blank = True)
 
     course_1 = models.CharField(max_length=50, blank = False)
     course_2 = models.CharField(max_length=50, blank = True)
