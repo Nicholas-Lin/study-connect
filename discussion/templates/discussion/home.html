@@ -1,7 +1,16 @@
-{% extends 'social_app/base.html'%}
+{% extends 'discussion/base.html'%}
+
+
 {% block content %}
-{% include 'social_app/navbar.html'%}
-<a class="btn btn-primary mt-1 mb-1" href="{% url 'post-create' %}">Create a Post</a>
+
+<div class="d-flex flex-column justify-content-center text-center mb-4">
+
+    <h6>Have a big exam coming up? Make a post to connect with classmates and form study groups - or
+        just see
+        what your classmates are up to! </h6>
+    <a class="btn btn-primary justify-self-center" href="{% url 'post-create' %}">Create a Post
+        ✏️</a>
+</div>
 {% for post in posts %}
 <article class="media content-section">
     <div class="media-body">
@@ -14,4 +23,8 @@
     </div>
 </article>
 {% endfor %}
+
+
+
+
 {% endblock content %}

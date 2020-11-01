@@ -1,7 +1,6 @@
-{% extends "social_app/base.html" %}
+{% extends 'discussion/base.html'%}
 {% load crispy_forms_tags %}
 {% block content %}
-{% include 'social_app/navbar.html'%}
 <div class="content-section">
     <form method="POST">
         {% csrf_token %}
@@ -10,6 +9,7 @@
             {{ form|crispy }}
         </fieldset>
         <div class="form-group">
+            <a class="btn btn-outline-secondary" href="{% url 'discussion-home'%}">Cancel</a>
             <button class="btn btn-outline-info" type="submit">Post</button>
         </div>
     </form>
