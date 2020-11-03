@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth.models import User
 from .models import Profile
+from django.forms.models import inlineformset_factory
+from social_app.models import StudentCourse
 
 class UserUpdateForm(forms.ModelForm):
     class Meta:
@@ -10,15 +12,19 @@ class UserUpdateForm(forms.ModelForm):
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model=Profile
-        fields = ['major', 'year_in_school','bio','course_1','course_2','course_3','course_4','course_5','course_6']
+        fields = ['major', 'year_in_school','bio']
         labels = {
         'major': 'Major',
         'year_in_school': 'Year in School',
         'bio': 'Profile Bio',
-        'course_1': 'course 1 (formatted as: CS2150)',
-        'course_2': 'course 2 (formatted as: CS2150)',
-        'course_3': 'course 3 (formatted as: CS2150)',
-        'course_4': 'course 4 (formatted as: CS2150)',
-        'course_5': 'course 5 (formatted as: CS2150)',
-        'course_6': 'course 6 (formatted as: CS2150)',
         }
+
+class StudentCourseForm(forms.ModelForm):
+
+    class Meta:
+        model = StudentCourse
+        exclude = ()
+
+StudentCourseFormSet = inlineformset_factory(
+    Profile, StudentCourse, form=StudentCourseForm, extra=1, can_delete=True
+    )

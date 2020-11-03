@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
+from django.db import transaction
+from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
-from .forms import UserUpdateForm, ProfileUpdateForm
+from django.views.generic import UpdateView
+from .forms import UserUpdateForm, ProfileUpdateForm, StudentCourseFormSet
 from django.contrib import messages
 from django.views.generic import DetailView
 from .models import Profile
@@ -26,8 +29,8 @@ def profile(request):
 
 
     context = {
-        'u_form': u_form,
-        'p_form' : p_form
+        'user_form': u_form,
+        'profile_form' : p_form
     }
 
     return render(request, 'users/profile.html', context)
@@ -38,4 +41,29 @@ class ProfileDetailView(DetailView):
     def get_slug_field(self):
         return 'user__username'
     
+class ProfileStudentCourseUpdate(UpdateView):
+    model = Profile
+    fields = []
+    success_url = reverse_lazy('profile-edit')
     
+    def get_object(self):
+        return self.model.objects.get(pk=self.request.user.profile.pk)
+
+    def get_context_data(self, **kwargs):
+        data = super(ProfileStudentCourseUpdate, self).get_context_data(**kwargs)
+        if self.request.POST:
+            data['studentcourses'] = StudentCourseFormSet(self.request.POST, instance=self.object)
+        else:
+            data['studentcourses'] = StudentCourseFormSet(instance=self.object)
+        return data
+
+    def form_valid(self, form):
+        context = self.get_context_data()
+        studentcourses = context['studentcourses']
+        with transaction.atomic():
+            self.object = form.save()
+
+            if studentcourses.is_valid():
+                studentcourses.instance = self.object
+                studentcourses.save()
+        return super(ProfileStudentCourseUpdate, self).form_valid(form)
