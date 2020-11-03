@@ -26,6 +26,7 @@ urlpatterns = [
     path('login/', user_views.login, name='login'),
     path('profile/',  include('users.urls')),
     path('', include('social_app.urls')),
+    path('searchableselect/', include('searchableselect.urls')),
 ]
 
 if settings.DEBUG:

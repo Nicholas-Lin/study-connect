@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'discussion.apps.DiscussionConfig',
     'users.apps.UsersConfig',
 
+    'searchableselect',
+
     'allauth', 
     'allauth.account',  
     'allauth.socialaccount',   
