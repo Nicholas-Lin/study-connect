@@ -3,10 +3,18 @@
 <div class="content-section">
     <div class="row">
         <div class="col-md-6 m-auto">
-            <div>{{ object.user.first_name }} {{ object.user.last_name }}</div>
-            <div>Major: {{ object.major }}</div>
-
-            <p>Bio: {{object.bio}}</p>
+            <div><b>{{ object.user.first_name }} {{ object.user.last_name }}</b></div>
+            <div> <b>Major:</b> {{ object.major }}</div>
+            <div><b>Courses:</b> 
+                {% for StudentCourse in object.studentcourse_set.all %}
+                    {% if StudentCourse == object.studentcourse_set.last%}
+                        {{ StudentCourse.subject}} {{ StudentCourse.catalog_number}}
+                    {% else %}
+                    {{ StudentCourse.subject}} {{ StudentCourse.catalog_number}},
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <p><b>Bio:</b> {{object.bio}}</p>
         </div>
         {% if object.user == user%}
         <div>
