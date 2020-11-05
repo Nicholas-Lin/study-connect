@@ -16,6 +16,7 @@
     <div class="media-body">
         <div class="article-metadata">
             <a class="mr-2" href="{% url 'profile-detail' post.author.username%}">{{ post.author }}</a>
+            <em class="text-muted">{{ post.course.subject}} {{ post.course.catalog_number}}</em>
             <small class="text-muted">{{ post.date_posted |date:"F d, Y" }}</small>
         </div>
         <h2><a class="article-title" href="{% url 'post-detail' post.id%}">{{ post.title }}</a></h2>
