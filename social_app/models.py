@@ -13,3 +13,6 @@ class StudentCourse(models.Model):
     catalog_number = models.CharField(max_length=4, blank=True)
     difficulty = models.SmallIntegerField()
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.subject + " " + self.catalog_number
