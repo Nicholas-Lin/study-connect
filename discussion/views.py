@@ -9,7 +9,6 @@ from django.views.generic import (
     DeleteView
 )
 from .models import Post
-from social_app.models import StudentCourse
 
 
 def home(request):
@@ -35,10 +34,6 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         form.instance.profile = self.request.user.profile
         return super().form_valid(form)
-    def get_form(self, *args, **kwargs):
-        form = super(PostCreateView, self).get_form(*args, **kwargs)
-        form.fields['course'].queryset = StudentCourse.objects.filter(profile = self.request.user.profile)
-        return form
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
