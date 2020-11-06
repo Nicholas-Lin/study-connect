@@ -5,6 +5,7 @@ from users.models import Profile
 class Course(models.Model):
     subject = models.CharField(max_length=4)
     catalog_number = models.CharField(max_length=4)
+<<<<<<< Updated upstream
     class_title = models.CharField(max_length=100)
 
 class StudentCourse(models.Model):
@@ -16,3 +17,6 @@ class StudentCourse(models.Model):
 
     def __str__(self):
         return self.subject + " " + self.catalog_number
+=======
+    class_title = models.CharField(max_length=50)
+>>>>>>> Stashed changes
