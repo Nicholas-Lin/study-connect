@@ -48,7 +48,7 @@ class ProfileStudentCourseUpdate(UpdateView):
     
     def get_object(self):
         return self.model.objects.get(pk=self.request.user.profile.pk)
-
+    
     def get_context_data(self, **kwargs):
         data = super(ProfileStudentCourseUpdate, self).get_context_data(**kwargs)
         if self.request.POST:
