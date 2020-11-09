@@ -1,0 +1,15 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Success</title>
+</head>
+<body>
+{% block content %}
+
+    <h1>email sent successfully to: {{ recepient }}</h1>
+    <a href="{% url 'profile-edit' %}"><button type="button" class="btn btn-primary">Back to Home</button></a>
+</body>
+{% endblock content %}
+</html>
