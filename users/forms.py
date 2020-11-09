@@ -4,6 +4,14 @@ from .models import Profile
 from django.forms.models import inlineformset_factory
 from social_app.models import StudentCourse, Course
 
+
+class Message(forms.Form):
+    Email = forms.EmailField()
+    Subject = forms.CharField()
+    emailContent = forms.CharField(label = "Message", widget = forms.Textarea(attrs = {'rows': 4, 'cols': 40}))
+    def __str__(self):
+        return self.Email
+
 class UserUpdateForm(forms.ModelForm):
     class Meta:
         model=User
