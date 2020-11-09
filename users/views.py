@@ -25,8 +25,6 @@ def message(request):
         subject = str(sub['Subject'].value())
         message = str(sub['emailContent'].value())
         recepient = str(sub['Email'].value())
-        # send_mail(subject, 
-        #     message, EMAIL_HOST_USER, [recepient],fail_silently = False)
         email = EmailMessage(
             subject,
             message,
