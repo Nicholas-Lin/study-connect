@@ -19,6 +19,7 @@ from django.core.mail import EmailMessage
 
 #DataFlair #Send Email
 def message(request):
+    model = Profile
     sub = forms.Message()
     if request.method == 'POST':
         sub = forms.Message(request.POST)
@@ -28,7 +29,8 @@ def message(request):
         email = EmailMessage(
             subject,
             message,
-            EMAIL_HOST_USER,
+            #EMAIL_HOST_USER,
+            'Study Buddy <studybuddyuva@gmail.com>',
             [recepient],
             reply_to=[request.user.email],
             headers={'Message-ID': 'foo'},
