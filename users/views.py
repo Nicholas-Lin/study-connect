@@ -7,7 +7,7 @@ from .forms import UserUpdateForm, ProfileUpdateForm, StudentCourseFormSet
 from django.contrib import messages
 from django.views.generic import DetailView
 from .models import Profile
-
+from django.contrib.auth.models import User
 from mysite.settings import EMAIL_HOST_USER
 from . import forms
 from django.core.mail import send_mail
@@ -18,14 +18,14 @@ from django.core.mail import EmailMessage
 # Create your views here.
 
 #DataFlair #Send Email
-def message(request):
+def message(request, slug):
     model = Profile
     sub = forms.Message()
     if request.method == 'POST':
         sub = forms.Message(request.POST)
         subject = str(sub['Subject'].value())
         message = str(sub['emailContent'].value())
-        recepient = str(sub['Email'].value())
+        recepient = User.objects.get(username=slug).email
         email = EmailMessage(
             subject,
             message,
