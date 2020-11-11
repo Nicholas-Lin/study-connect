@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
+from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
     ListView,
@@ -32,8 +33,9 @@ class GroupCreateView(LoginRequiredMixin, CreateView):
     
     def form_valid(self, form):
         form.instance.owner = self.request.user
-        form.instance.profile = self.request.user.profile
-        return super().form_valid(form)
+        self.object = form.save()
+        form.instance.members.add(self.request.user.profile)
+        return HttpResponseRedirect(self.get_success_url())
 
     def save(self):
         instance = forms.ModelForm.save(self)
