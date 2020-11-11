@@ -34,6 +34,13 @@ class GroupCreateView(LoginRequiredMixin, CreateView):
         form.instance.owner = self.request.user
         form.instance.profile = self.request.user.profile
         return super().form_valid(form)
+
+    def save(self):
+        instance = forms.ModelForm.save(self)
+        instance.members_set.clear()
+        instance.members_set.add(self.request.user.profile)
+        return instance
+
     def get_form(self, *args, **kwargs):
         form = super(GroupCreateView, self).get_form(*args, **kwargs)
         form.fields['course'].queryset = StudentCourse.objects.filter(profile = self.request.user.profile)
@@ -56,14 +63,14 @@ class GroupUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class GroupDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Group
-    success_url = reverse_lazy('groups-home')
+    success_url = reverse_lazy('group-home')
 
     def form_valid(self, form):
-        form.instance.author = self.request.user
+        form.instance.owner = self.request.user
         return super().form_valid(form)
 
     def test_func(self):
         group = self.get_object()
-        if self.request.user == group.author:
+        if self.request.user == group.owner:
             return True
         return False
