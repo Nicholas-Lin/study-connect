@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'social_app.apps.SocialAppConfig',
     'discussion.apps.DiscussionConfig',
     'users.apps.UsersConfig',
+    'groups.apps.GroupsConfig',
 
 
     'allauth', 
