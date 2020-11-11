@@ -10,6 +10,7 @@ class Group(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     course = models.ForeignKey(StudentCourse, default='', on_delete=models.CASCADE, null=True)
     members = models.ManyToManyField(Profile)
+    private = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name

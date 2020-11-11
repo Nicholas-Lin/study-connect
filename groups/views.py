@@ -28,7 +28,7 @@ class GroupDetailView(DetailView):
 
 class GroupCreateView(LoginRequiredMixin, CreateView):
     model = Group
-    fields = ['name', 'description', 'course']
+    fields = ['name', 'description', 'course', 'private']
     
     def form_valid(self, form):
         form.instance.owner = self.request.user

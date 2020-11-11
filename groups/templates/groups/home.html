@@ -18,6 +18,13 @@
         </div>
         <h2><a class="article-title" href="{% url 'group-detail' group.id%}">{{ group.name }}</a></h2>
         <p class="article-content">{{ group.description }}</p>
+        <h5>Group Members: </h5>
+        <ul>
+            {% for member in group.members.all %}
+            <li>{{member.user.username}}</li>
+            {% endfor %}
+        </ul>
+
     </div>
 </article>
 {% endfor %}
