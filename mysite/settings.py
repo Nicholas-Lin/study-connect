@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',   
     'allauth.socialaccount.providers.google',
     'crispy_forms',
+    'django_filters',
 ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

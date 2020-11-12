@@ -1,0 +1,51 @@
+{% extends 'finder/base.html'%}
+
+
+{% block content %}
+
+<div class="d-flex flex-column justify-content-center text-center mb-4">
+
+    <h6>Find Your Next Studdy Buddy </h6>
+    <form action="{% url 'finder-home' %}" method="get">
+        <label for="course">Class</label>
+        <select name="course">
+            <option value="">-----------------</option>
+            {%for course in user.profile.studentcourse_set.all %}
+            <option value="{{course.id}}">{{ course.subject}} {{ course.catalog_number}}</option>
+            {% endfor %}
+            <input type="submit" />
+    </form>
+    {% if course != None%}
+    <h3>Buddies in {{ course.subject}} {{ course.catalog_number}}</h3>
+    {% else %}
+    <h3>All Users</h3>
+    {%endif%}
+</div>
+
+
+
+{% for profile in profiles %}
+<article class="media content-section">
+    <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2" href="{% url 'profile-detail' profile.user.username%}">{{ profile.user.username }}</a>
+        </div>
+    </div>
+</article>
+{% endfor %}
+
+<!-- <form method="get">
+    {{ filter.form.as_p }}
+    <input type="submit" />
+</form>
+{% for profile in filter.qs %}
+<article class="media content-section">
+    <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2" href="{% url 'profile-detail' profile.user.username%}">{{ profile.user.username }}</a>
+        </div>
+    </div>
+</article>
+{% endfor %} -->
+
+{% endblock content %}

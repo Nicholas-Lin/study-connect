@@ -1,6 +1,6 @@
 from django.urls import path
-from . import views
+from .views import profile_list
 
 urlpatterns = [
-    path('', GroupListView.as_view(), name='finder-home'),
+    path('', profile_list, name='finder-home'),
 ]
