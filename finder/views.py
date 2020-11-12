@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from social_app.models import StudentCourse
 from users.models import Profile
 #from django_filters.views import FilterView
-from .filters import ProfileFilter
+#from .filters import ProfileFilter
 
 
 def profile_list(request, template_name='finder/home.html'):
@@ -17,7 +17,7 @@ def profile_list(request, template_name='finder/home.html'):
         for c in courses:
             profiles.append(Profile.objects.get(id=c.profile.id))
     else:
-        profiles = list(Profile.objects.all())
+        profiles = Profile.objects.all()
 
     context_dict = {'profiles': profiles, 'course': course}
     return render(request, "finder/home.html", context_dict)

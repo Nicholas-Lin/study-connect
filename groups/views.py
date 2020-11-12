@@ -11,7 +11,7 @@ from django.views.generic import (
 )
 from .models import Group
 from social_app.models import StudentCourse
-
+from users.models import Profile
 
 def home(request):
     context = {
@@ -23,6 +23,9 @@ class GroupListView(ListView):
     model = Group
     template_name = 'groups/home.html'
     context_object_name = 'groups'
+
+    def get_queryset(self):
+        return self.model.objects.filter(members=self.request.user.profile)
 
 class GroupDetailView(DetailView):
     model = Group
