@@ -30,7 +30,7 @@ def message(request, slug):
             subject,
             message,
             #EMAIL_HOST_USER,
-            'Study Buddy <studybuddyuva@gmail.com>',
+            User.objects.get(username=slug).username + ' has sent you a message from study connect <studybuddyuva@gmail.com>',
             [recepient],
             reply_to=[request.user.email],
             headers={'Message-ID': 'foo'},
