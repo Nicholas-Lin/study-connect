@@ -5,18 +5,19 @@
         <div class="col-md-6 m-auto">
             <div><b>{{ object.user.first_name }} {{ object.user.last_name }}</b></div>
             <div> <b>Major:</b> {{ object.major }}</div>
-            <div><b>Courses:</b> 
+            <div><b>Courses:</b>
                 {% for StudentCourse in object.studentcourse_set.all %}
-                    {% if StudentCourse == object.studentcourse_set.last%}
-                        {{ StudentCourse.subject}} {{ StudentCourse.catalog_number}}
-                    {% else %}
-                    {{ StudentCourse.subject}} {{ StudentCourse.catalog_number}},
-                    {% endif %}
+                {% if StudentCourse == object.studentcourse_set.last%}
+                {{ StudentCourse.subject}} {{ StudentCourse.catalog_number}}
+                {% else %}
+                {{ StudentCourse.subject}} {{ StudentCourse.catalog_number}},
+                {% endif %}
                 {% endfor %}
             </div>
             <p><b>Bio:</b> {{object.bio}}</p>
-            
-            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'message' %}">Message {{ object.user.first_name }}</a>
+
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url  'message' object.user.username  %}">Message
+                {{ object.user.first_name }}</a>
             {% if object.user != user%}
             <form action="" method="get">
                 <label for="group">Add to Group</label>
@@ -25,10 +26,11 @@
                     {%for group in user.profile.group_set.all %}
                     <option value="{{group.id}}">{{ group.name}}</option>
                     {% endfor %}
-                    <input type="submit"/>
+                    <input type="submit" />
             </form>
             {% endif %}
-            
+
+
         </div>
         {% if object.user == user%}
         <div>
