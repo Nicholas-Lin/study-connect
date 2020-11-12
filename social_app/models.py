@@ -14,5 +14,6 @@ class StudentCourse(models.Model):
     difficulty = models.SmallIntegerField()
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
 
+
     def __str__(self):
         return self.subject + " " + self.catalog_number

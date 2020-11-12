@@ -6,7 +6,6 @@ from social_app.models import StudentCourse, Course
 
 
 class Message(forms.Form):
-    Email = forms.EmailField()
     #Email = User.email
     Subject = forms.CharField()
     emailContent = forms.CharField(label = "Message", widget = forms.Textarea(attrs = {'rows': 4, 'cols': 40}))
