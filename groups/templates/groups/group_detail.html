@@ -1,0 +1,26 @@
+{% extends 'groups/base.html'%}
+{% block content %}
+<article class="media content-section">
+    <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2" href="{% url 'profile-detail' object.owner.username%}">{{ object.name }}</a>
+            <em class="text-muted">{{ object.course.subject}} {{ object.course.catalog_number}}</em>
+            {% if object.owner == user%}
+            <div>
+                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'group-update' object.id%}">Update</a>
+                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'group-delete' object.id%}">Delete</a>
+            </div>
+            {% endif %}
+        </div>
+        <h2 class="article-title">{{ object.name }}</h2>
+        <p class="article-content">{{ object.description }}</p>
+        <h5>Group Members: </h5>
+        <ul>
+            {% for member in object.members.all %}
+            <li>{{member.user.username}}</li>
+            {% endfor %}
+        </ul>
+        <a class="btn btn-secondary" href="{% url 'group-home'%}">Back to Groups</a>
+    </div>
+</article>
+{% endblock content %}

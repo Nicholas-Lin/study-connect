@@ -25,6 +25,9 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('login/', user_views.login, name='login'),
     path('profile/',  include('users.urls')),
+    path('discussion/', include('discussion.urls')),
+    path('group/', include('groups.urls')),
+    path('finder/', include('finder.urls')),
     path('', include('social_app.urls')),
 ]
 

@@ -1,0 +1,35 @@
+{% extends 'groups/base.html'%}
+
+
+{% block content %}
+
+<div class="d-flex flex-column justify-content-center text-center mb-4">
+
+    <h6>Create a new group and add some friends! </h6>
+    <a class="btn btn-primary justify-self-center" href="{% url 'group-create' %}">Create a Group
+        ✏️</a>
+</div>
+{% for group in groups %}
+<article class="media content-section">
+    <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2" href="{% url 'profile-detail' group.owner.username%}">{{ group.owner}}</a>
+            <em class="text-muted">{{ group.course.subject}} {{ group.course.catalog_number}}</em>
+        </div>
+        <h2><a class="article-title" href="{% url 'group-detail' group.id%}">{{ group.name }}</a></h2>
+        <p class="article-content">{{ group.description }}</p>
+        <h5>Group Members: </h5>
+        <ul>
+            {% for member in group.members.all %}
+            <li>{{member.user.username}}</li>
+            {% endfor %}
+        </ul>
+
+    </div>
+</article>
+{% endfor %}
+
+
+
+
+{% endblock content %}

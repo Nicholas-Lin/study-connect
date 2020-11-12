@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect , get_object_or_404
 from django.db import transaction
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
@@ -7,12 +7,15 @@ from .forms import UserUpdateForm, ProfileUpdateForm, StudentCourseFormSet
 from django.contrib import messages
 from django.views.generic import DetailView
 from .models import Profile
+from groups.models import Group
+
 from django.contrib.auth.models import User
 from mysite.settings import EMAIL_HOST_USER
 from . import forms
 from django.core.mail import send_mail
 
 from django.core.mail import EmailMessage
+from django.views.generic.edit import FormMixin 
 
 
 # Create your views here.
@@ -63,6 +66,16 @@ def profile(request):
     }
 
     return render(request, 'users/profile.html', context)
+
+def profile_detail(request, slug, template_name='users/profile_detail.html'):
+    profile= get_object_or_404(Profile, user__username=slug)
+
+    if request.GET.get('group'):
+        group_id = request.GET.get('group')
+        Group.objects.get(id=group_id).members.add(profile)
+
+    context_dict = {'object': profile}
+    return render(request, "users/profile_detail.html", context_dict)
 
 class ProfileDetailView(DetailView):
     model = Profile
