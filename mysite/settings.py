@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'discussion.apps.DiscussionConfig',
     'users.apps.UsersConfig',
     'groups.apps.GroupsConfig',
+    'finder.apps.FinderConfig',
 
 
     'allauth', 
