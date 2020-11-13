@@ -28,13 +28,13 @@ def message(request, slug):
         sub = forms.Message(request.POST)
         subject = str(sub['Subject'].value())
         message = str(sub['emailContent'].value())
-        recepient = User.objects.get(username=slug).email
+        recepient = User.objects.get(username=slug).first_name
         email = EmailMessage(
             subject,
             message,
             #EMAIL_HOST_USER,
             User.objects.get(username=slug).username + ' has sent you a message from study connect <studybuddyuva@gmail.com>',
-            [recepient],
+            [User.objects.get(username=slug).email],
             reply_to=[request.user.email],
             headers={'Message-ID': 'foo'},
             )
