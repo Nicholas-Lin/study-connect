@@ -19,6 +19,17 @@ def home(request):
     }
     return render(request, 'groups/home.html', context)
 
+def group_add_self(request, pk, template_name='groups/group_detail.html'):
+    memberobj= get_object_or_404(Group, id=pk)
+
+    Group.objects.get(id=pk).members.add(request.user.profile)
+    context = {
+        'groups': Group.objects.all()
+    }
+
+    success_url = reverse_lazy('group-home')
+    return HttpResponseRedirect(success_url)
+
 def group_remove_member(request, pk, template_name='groups/group_detail.html'):
     memberobj= get_object_or_404(Group, id=pk)
 
