@@ -9,6 +9,8 @@ from django.views.generic import DetailView
 from .models import Profile
 from groups.models import Group
 
+from django.http import HttpResponseRedirect
+
 from django.contrib.auth.models import User
 from mysite.settings import EMAIL_HOST_USER
 from . import forms
@@ -73,6 +75,9 @@ def profile_detail(request, slug, template_name='users/profile_detail.html'):
     if request.GET.get('group'):
         group_id = request.GET.get('group')
         Group.objects.get(id=group_id).members.add(profile)
+        context_dict = {'object': request.user.profile}
+        success_url = reverse_lazy('group-home')
+        return HttpResponseRedirect(success_url)
 
     context_dict = {'object': profile}
     return render(request, "users/profile_detail.html", context_dict)
