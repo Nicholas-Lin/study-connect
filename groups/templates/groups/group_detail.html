@@ -32,6 +32,7 @@
             <li>{{member.user.username}}</li>
             {% endfor %}
         </ul>
+        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url  'message-group' object.id  %}">Message Group</a>
         <a class="btn btn-secondary" href="{% url 'group-home'%}">Back to Groups</a>
     </div>
 </article>
