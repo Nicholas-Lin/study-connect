@@ -47,7 +47,7 @@ def messageGroup(request, slug):
             #EMAIL_HOST_USER,
             Group.objects.get(id=slug).name + ' Message has been sent <studybuddyuva@gmail.com>',
             matches,
-            reply_to=matches,
+            reply_to=[request.user.email],
             headers={'Message-ID': 'foo'},
             )
         email.send()
