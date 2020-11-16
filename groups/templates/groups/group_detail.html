@@ -12,16 +12,13 @@
             </div>
             {% endif %}
 
-            {% if object.owner != user%}
-                <a class="btn btn-outline-secondary btn-sm mt-1 mb-1" name="group" href="{% url 'group-removeself' object.id%}">Leave Group</a>
-                {% if object.private != false%}
-                    <a class="btn btn-outline-secondary btn-sm mt-1 mb-1" name="group" href="{% url 'group-addself' object.id%}">Add Myself</a>
-                {% endif %}
-             <!-- {% for group in user.group_set.all %}-->
-            <!-- {% if group.id == object.id%}-->
-            <!-- {% endif %}-->
-            <!-- {% endfor %}-->
-            
+            {% if object.owner != user and user.profile in object.members.all%}
+            <a class="btn btn-outline-secondary btn-sm mt-1 mb-1" name="group"
+                href="{% url 'group-removeself' object.id%}">Leave Group</a>
+            {% endif %}
+            {% if object.private != false and user.profile not in object.members.all%}
+            <a class="btn btn-outline-secondary btn-sm mt-1 mb-1" name="group"
+                href="{% url 'group-addself' object.id%}">Join Group</a>
             {% endif %}
         </div>
         <h2 class="article-title">{{ object.name }}</h2>
