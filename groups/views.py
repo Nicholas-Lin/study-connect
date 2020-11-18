@@ -2,6 +2,10 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from . import forms
+
+from django.contrib import messages
+from groups.models import Group
 from django.views.generic import (
     ListView,
     DetailView,
@@ -13,11 +17,42 @@ from .models import Group
 from social_app.models import StudentCourse
 from users.models import Profile
 
+from django.http import HttpResponseRedirect
+
+from mysite.settings import EMAIL_HOST_USER
+from django.core.mail import send_mail
+from users.models import User
+from django.contrib.auth.models import User
+from django.core.mail import EmailMessage
+
 def home(request):
     context = {
         'groups': Group.objects.all()
     }
     return render(request, 'groups/home.html', context)
+
+#DataFlair #Send Email
+def messageGroup(request, slug):
+    model = Profile
+    sub = forms.MessageGroup()
+    if request.method == 'POST':
+        sub = forms.MessageGroup(request.POST)
+        subject = str(sub['Subject'].value())
+        message = str(sub['emailContent'].value())
+        #recepient = User.objects.get(username=slug).first_name
+        matches = [val.user.email for val in Group.objects.get(id=slug).members.all()]
+        email = EmailMessage(
+            subject,
+            message,
+            #EMAIL_HOST_USER,
+            Group.objects.get(id=slug).name + ' has sent a message <studybuddyuva@gmail.com>',
+            matches,
+            reply_to=[request.user.email],
+            headers={'Message-ID': 'foo'},
+            )
+        email.send()
+        return render(request, 'groups/success.html', {'recepient': Group.objects.get(id=slug).name})
+    return render(request, 'groups/message_group.html', {'form':sub})
 
 def group_add_self(request, pk, template_name='groups/group_detail.html'):
     memberobj= get_object_or_404(Group, id=pk)
