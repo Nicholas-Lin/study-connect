@@ -1,13 +1,12 @@
-# Studdy Connect
+# Study Connect
 
 > Find your next study group
 
-Studdy Connect is our group project for "Project Option 4: Virtual Study-Buddy Finder" for CS 3240. 
+Study Connect is our group project for "Project Option 4: Virtual Study-Buddy Finder" for CS 3240. 
 
-[Try out Studdy Connect](https://study-buddy-finder.herokuapp.com/)
+[Try out Study Connect](https://study-buddy-finder.herokuapp.com/)
 
 ## Features
-
 1. Profile
     - Users can add UVA courses to their profile
     - Users can customize their profile with their own information
@@ -23,6 +22,7 @@ Studdy Connect is our group project for "Project Option 4: Virtual Study-Buddy F
 4. Discussion
     - Users can create, edit, and delete their own discussion posts
     - Users can view other users' posts
+
 ## How did we satisfy the requirements?
 1. Users shall be able to save their course schedule with their account.
     - Users can add courses to their profile. These courses are validated as a valid course using the [UVA Devhub Schedule API on the "/courses" endpoint](https://devhub.virginia.edu/API)
