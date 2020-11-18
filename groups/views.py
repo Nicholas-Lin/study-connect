@@ -45,13 +45,13 @@ def messageGroup(request, slug):
             subject,
             message,
             #EMAIL_HOST_USER,
-            Group.objects.get(id=slug).name + ' Message has been sent <studybuddyuva@gmail.com>',
+            Group.objects.get(id=slug).name + ' has sent a message <studybuddyuva@gmail.com>',
             matches,
             reply_to=[request.user.email],
             headers={'Message-ID': 'foo'},
             )
         email.send()
-        return render(request, 'groups/base.html', {'recepient': 'ezraberg@gmail.com'})
+        return render(request, 'groups/success.html', {'recepient': Group.objects.get(id=slug).name})
     return render(request, 'groups/message_group.html', {'form':sub})
 
 def group_add_self(request, pk, template_name='groups/group_detail.html'):
