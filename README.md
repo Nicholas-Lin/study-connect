@@ -4,7 +4,7 @@
 
 Study Connect is our group project for "Project Option 4: Virtual Study-Buddy Finder" for CS 3240. 
 
-[Try out Studdy Connect](https://study-buddy-finder.herokuapp.com/)
+[Try out Study Connect](https://study-buddy-finder.herokuapp.com/)
 
 ## Features
 1. Profile
