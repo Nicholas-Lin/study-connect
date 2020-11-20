@@ -3,9 +3,13 @@
 
 {% block content %}
 
-<div class="d-flex flex-column justify-content-center text-center mb-4">
-    <h6><a href="{% url 'finder-buddy'%}">Find Your Next Study Buddy</a></h6>
-    <h6><a href="{% url 'finder-group'%}">Find Your Next Study Group</a></h6>
+<div class="d-flex flex-column justify-content-center text-center mb-3">
+    <a href="{% url 'finder-buddy'%}"><button type="button" class="btn btn-success btn-lg btn-block mb-5">🔎 Find
+            Your Next
+            Study <b>Buddy 😃</b> </button></a>
+    <a href="{% url 'finder-group'%}"><button type="button" class="btn btn-success btn-lg btn-block">🔎 Find Your
+            Next
+            Study <b>Group 🧠</b> </button></a>
 </div>
 
 {% endblock content %}
