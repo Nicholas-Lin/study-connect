@@ -21,7 +21,7 @@
         <h5>Group Members: </h5>
         <ul>
             {% for member in group.members.all %}
-            <li>{{member.user.username}}</li>
+            <li><a class="mr-2" href="{% url 'profile-detail' user.username%}">{{member.user.username}}</a></li>
             {% endfor %}
         </ul>
 
