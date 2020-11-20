@@ -35,7 +35,7 @@ def message(request, slug):
             subject,
             message,
             #EMAIL_HOST_USER,
-            User.objects.get(username=slug).username + ' has sent you a message from study connect <studybuddyuva@gmail.com>',
+            request.user.first_name + ' has sent you a message from study connect <studybuddyuva@gmail.com>',
             [User.objects.get(username=slug).email],
             reply_to=[request.user.email],
             headers={'Message-ID': 'foo'},
