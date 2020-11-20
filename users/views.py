@@ -91,7 +91,7 @@ class ProfileDetailView(DetailView):
 class ProfileStudentCourseUpdate(UpdateView):
     model = Profile
     fields = []
-    success_url = reverse_lazy('profile-edit')
+    success_url = reverse_lazy('profile-edit-courses')
     
     def get_object(self):
         return self.model.objects.get(pk=self.request.user.profile.pk)
