@@ -5,6 +5,6 @@ from django.contrib import messages
 # Create your views here.
 def home(request):
     if request.user.is_authenticated:
-        return render(request, 'social_app/index.html')
+        return redirect('profile-edit') 
     else:
         return redirect('login') 
