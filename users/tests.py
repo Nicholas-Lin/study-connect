@@ -1,4 +1,6 @@
 from django.test import TestCase
+
+from social_app.models import StudentCourse
 from users.models import Profile
 from django.contrib.auth.models import User
 
@@ -40,8 +42,27 @@ class ProfileTestCase(TestCase):
         self.assertEqual(john_green.profile.course_3, "")
         self.assertEqual(john_green.profile.course_2, "CS3240")
 
+    def test_bio_change(self):
+        john_green = User.objects.create_user(username="johngreen", email="johngreen@gmail.com")
+        john_green.profile.bio = "hi i am john green"
+        john_green.profile.bio = "changed bio"
+        self.assertEqual(john_green.profile.bio, "changed bio")
+
     def test_change_year(self):
         john_green = User.objects.create_user(username="johngreen", email="johngreen@gmail.com")
         john_green.profile.year_in_school = "1st"
         john_green.profile.year_in_school = "2nd"
         self.assertEqual(john_green.profile.year_in_school, "2nd")
+
+    def test_find(self):
+        new_user = User.objects.create_user(username="New_user", email="New_user@user.com")
+        test_course = StudentCourse.objects.create(subject="CS", catalog_number="2150", difficulty=2,
+                                                   profile=new_user.profile)
+        new_user2 = User.objects.create_user(username="New_user2", email="New_user2@user.com")
+        test_course2 = StudentCourse.objects.create(subject="CS", catalog_number="2150", difficulty=4,
+                                                   profile=new_user2.profile)
+        same_course = StudentCourse.objects.filter(subject="CS", catalog_number = "2150")
+        self.assertIn(test_course, same_course)
+        self.assertIn(test_course2, same_course)
+
+
