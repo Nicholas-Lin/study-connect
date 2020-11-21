@@ -1,14 +1,13 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 from discussion.models import Post
+from django.urls import reverse
 from users.models import Profile
 from social_app.models import StudentCourse
 from django.contrib.auth.models import User
 
 # Create your tests here.
 class DiscussionTestCase(TestCase):
-    def setUp(self):
-        new_user = User.objects.create_user(username="New_user", email="New_user@user.com")
-        new_post = Post.objects.create(title="the title", content="This is my first post right here", author=new_user)
+
 
     def test_post_created(self):
         new_user2 = User.objects.create_user(username="New_user2", email="New_user2@user.com")
@@ -39,5 +38,20 @@ class DiscussionTestCase(TestCase):
         john_green = User.objects.create_user(username="johngreen", email="johngreen@gmail.com")
         new_user2 = User.objects.create_user(username="New_user2", email="New_user2@user.com")
         new_post = Post.objects.create(title="the title", content="This is my first post right here", author=john_green)
-        new_post.author = john_green
-        self.assertEqual(new_post.author, john_green)
+        new_post.author = new_user2
+        self.assertEqual(new_post.author, new_user2)
+
+    def test_blank_post(self):
+        john_green = User.objects.create_user(username="johngreen", email="johngreen@gmail.com")
+        new_post = Post.objects.create(author=john_green)
+        self.assertIn(new_post, Post.objects.all())
+
+
+    def test_delete_post(self):
+        john_green = User.objects.create_user(username="johngreen", email="johngreen@gmail.com")
+        new_post = Post.objects.create(title="the title", content="This is my first post right here", author=john_green)
+        self.assertIn(new_post, Post.objects.all())
+        new_post.delete()
+        self.assertNotIn(new_post, Post.objects.all())
+
+
