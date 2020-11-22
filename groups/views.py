@@ -45,10 +45,7 @@ credentials = ServiceAccountCredentials.from_json_keyfile_name(
     filename="credentials.json", scopes=SCOPES
 )
 
-
-
 def home(request):
-    event = create_event()
     context = {
         'event': event.get('htmlLink'),
         'groups': Group.objects.all()
