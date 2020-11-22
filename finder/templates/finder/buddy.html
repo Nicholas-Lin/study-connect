@@ -5,15 +5,16 @@
 
 <div class="d-flex flex-column justify-content-center text-center mb-4">
 
-    <h6>Find Your Next Study Buddy </h6>
-    <form action="{% url 'finder-buddy' %}" method="get">
+    <h6>Find Your Next Study Buddy 😃! Select a class to find your classmates and click on their profile to message
+        them! </h6>
+    <form class="mt-2 mb-2" action="{% url 'finder-buddy' %}" method="get">
         <label for="course">Class</label>
         <select name="course">
-            <option value="">-----------------</option>
+            <option class="dropdown-item" value="">-----------------</option>
             {%for course in user.profile.studentcourse_set.all %}
-            <option value="{{course.id}}">{{ course.subject}} {{ course.catalog_number}}</option>
+            <option class="dropdown-item" value="{{course.id}}">{{ course.subject}} {{ course.catalog_number}}</option>
             {% endfor %}
-            <input type="submit" />
+            <input class="btn btn-primary ml-2" type="submit" />
     </form>
     {% if course != None%}
     <h3>Buddies in {{ course.subject}} {{ course.catalog_number}}</h3>
