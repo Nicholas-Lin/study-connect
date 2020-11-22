@@ -6,9 +6,11 @@
             <a class="mr-2" href="{% url 'profile-detail' object.owner.username%}">{{ object.name }}</a>
             <em class="text-muted">{{ object.course.subject}} {{ object.course.catalog_number}}</em>
             <div>
+                {% if user.profile in object.members.all%}
                 <a class="btn btn btn-outline-info btn-sm mt-1 mb-1"
                     href="{% url  'message-group' object.id  %}">Message
                     Group</a>
+                {% endif %}
                 {% if object.owner == user%}
                 <a class="btn btn-outline-success btn-sm mt-1 mb-1" href="{% url 'finder-buddy' %}">Add a Buddy</a>
                 <a class="btn btn-outline-success btn-sm mt-1 mb-1" href="{% url 'group-update' object.id%}">Update</a>
@@ -19,14 +21,16 @@
                     href="{% url 'group-removeself' object.id%}">Leave Group</a>
                 {% endif %}
             </div>
-
-            {% if object.private != false and user.profile not in object.members.all%}
+            {% if not object.private and user.profile not in object.members.all%}
             <a class="btn btn-outline-secondary btn-sm mt-1 mb-1" name="group"
                 href="{% url 'group-addself' object.id%}">Join Group</a>
             {% endif %}
         </div>
         <h2 class="article-title">{{ object.name }}</h2>
         <p class="article-content">{{ object.description }}</p>
+        {% if user.profile in object.members.all%}
+        <h5>Meeting Link: <a href="{{object.meeting_url}}" target="_blank"> {{object.meeting_url}}</a></h5>
+        {% endif %}
         <h5>Group Members: </h5>
         <ul>
             {% for member in object.members.all %}
