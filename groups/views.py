@@ -25,8 +25,32 @@ from users.models import User
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
 
+from google.oauth2.credentials import Credentials
+from googleapiclient.discovery import build
+from allauth.socialaccount.models import SocialAccount, SocialApp, SocialToken
+
+
+
+import datetime
+from datetime import timedelta
+
+import pytz
+from googleapiclient.discovery import build
+from oauth2client.service_account import ServiceAccountCredentials
+import uuid
+
+service_account_email = "cs3240@cs-3240-291201.iam.gserviceaccount.com"
+SCOPES = ["https://www.googleapis.com/auth/calendar"]
+credentials = ServiceAccountCredentials.from_json_keyfile_name(
+    filename="credentials.json", scopes=SCOPES
+)
+
+
+
 def home(request):
+    event = create_event()
     context = {
+        'event': event.get('htmlLink'),
         'groups': Group.objects.all()
     }
     return render(request, 'groups/home.html', context)
@@ -93,6 +117,7 @@ class GroupCreateView(LoginRequiredMixin, CreateView):
     
     def form_valid(self, form):
         form.instance.owner = self.request.user
+        form.instance.meeting_url = self.create_event()
         self.object = form.save()
         form.instance.members.add(self.request.user.profile)
         return HttpResponseRedirect(self.get_success_url())
@@ -108,9 +133,39 @@ class GroupCreateView(LoginRequiredMixin, CreateView):
         form.fields['course'].queryset = StudentCourse.objects.filter(profile = self.request.user.profile)
         return form
 
+    def build_service(self):
+        service = build("calendar", "v3", credentials=credentials)
+        return service
+
+    def create_event(self):
+        service = self.build_service()
+        start_datetime = datetime.datetime.now(tz=pytz.utc)
+        event = (
+            service.events()
+            .insert(
+                calendarId="studybuddyuva@gmail.com",
+                body={
+                    "summary": "Foo",
+                    "description": "Bar",
+                    "start": {"dateTime": start_datetime.isoformat()},
+                    "end": {
+                        "dateTime": (start_datetime + timedelta(minutes=60)).isoformat()
+                    },
+                    "conferenceData": {
+                        "createRequest": {
+                            "requestId": f"{uuid.uuid4().hex}",
+                            "conferenceSolutionKey": {"type": "hangoutsMeet"}}},
+                },
+                conferenceDataVersion=1
+            )
+            .execute()
+        )
+        print(event["hangoutLink"])
+        return event["hangoutLink"]
+
 class GroupUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Group
-    fields = ['name', 'description', 'course']
+    fields = ['name', 'description', 'course', 'meeting_url']
     
     def form_valid(self, form):
         form.instance.owner = self.request.user

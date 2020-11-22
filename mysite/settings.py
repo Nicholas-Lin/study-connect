@@ -157,6 +157,7 @@ SOCIALACCOUNT_PROVIDERS = {
         'SCOPE': [
             'profile',
             'email',
+            'calendar'
         ],
         'AUTH_PARAMS': {
             'access_type': 'online',

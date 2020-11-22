@@ -11,6 +11,7 @@ class Group(models.Model):
     course = models.ForeignKey(StudentCourse, default='', on_delete=models.CASCADE, null=True)
     members = models.ManyToManyField(Profile)
     private = models.BooleanField(default=False)
+    meeting_url = models.URLField(default='https://meet.google.com/')
 
     def __str__(self):
         return self.name

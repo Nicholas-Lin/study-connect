@@ -27,6 +27,7 @@
         </div>
         <h2 class="article-title">{{ object.name }}</h2>
         <p class="article-content">{{ object.description }}</p>
+        <h5>Meeting Link: <a href="{{object.meeting_url}}" target="_blank"> {{object.meeting_url}}</a></h5>
         <h5>Group Members: </h5>
         <ul>
             {% for member in object.members.all %}
