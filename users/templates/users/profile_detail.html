@@ -15,18 +15,18 @@
                 {% endfor %}
             </div>
             <p><b>Bio:</b> {{object.bio}}</p>
-
-            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url  'message' object.user.username  %}">Message
-                {{ object.user.first_name }}</a>
             {% if object.user != user%}
+            <a class="btn btn-primary btn-sm mt-1 mb-1" href="{% url  'message' object.user.username  %}">Message
+                {{ object.user.first_name }}</a>
+
             <form action="" method="get">
-                <label for="group">Add to Group</label>
+                <label for="group">Add to {{ object.user.first_name }} Group</label>
                 <select name="group">
                     <option value="">-----------------</option>
                     {%for group in user.profile.group_set.all %}
                     <option value="{{group.id}}">{{ group.name}}</option>
                     {% endfor %}
-                    <input type="submit" />
+                    <input class="btn btn-sm btn-success ml-2" type="submit" />
             </form>
             {% endif %}
 
