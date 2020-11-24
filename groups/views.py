@@ -29,8 +29,6 @@ from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from allauth.socialaccount.models import SocialAccount, SocialApp, SocialToken
 
-
-
 import datetime
 from datetime import timedelta
 
@@ -39,11 +37,11 @@ from googleapiclient.discovery import build
 from oauth2client.service_account import ServiceAccountCredentials
 import uuid
 
-service_account_email = "cs3240@cs-3240-291201.iam.gserviceaccount.com"
-SCOPES = ["https://www.googleapis.com/auth/calendar"]
-credentials = ServiceAccountCredentials.from_json_keyfile_name(
-    filename="credentials.json", scopes=SCOPES
-)
+# service_account_email = "cs3240@cs-3240-291201.iam.gserviceaccount.com"
+# SCOPES = ["https://www.googleapis.com/auth/calendar"]
+# credentials = ServiceAccountCredentials.from_json_keyfile_name(
+#     filename="credentials.json", scopes=SCOPES
+# )
 
 def home(request):
     context = {
@@ -114,7 +112,7 @@ class GroupCreateView(LoginRequiredMixin, CreateView):
     
     def form_valid(self, form):
         form.instance.owner = self.request.user
-        form.instance.meeting_url = self.create_event()
+        form.instance.meeting_url = self.create_event(form)
         self.object = form.save()
         form.instance.members.add(self.request.user.profile)
         return HttpResponseRedirect(self.get_success_url())
@@ -131,19 +129,25 @@ class GroupCreateView(LoginRequiredMixin, CreateView):
         return form
 
     def build_service(self):
+        social_token = SocialToken.objects.get(account__user=self.request.user)
+        credentials = Credentials(token=social_token.token,   
+                    refresh_token=social_token.token_secret,
+                    client_id=social_token.app.client_id,
+                    client_secret=social_token.app.secret)
+
         service = build("calendar", "v3", credentials=credentials)
         return service
 
-    def create_event(self):
+    def create_event(self, form):
         service = self.build_service()
         start_datetime = datetime.datetime.now(tz=pytz.utc)
         event = (
             service.events()
             .insert(
-                calendarId="studybuddyuva@gmail.com",
+                calendarId="primary",
                 body={
-                    "summary": "Foo",
-                    "description": "Bar",
+                    "summary": "Study Connect: " + form.instance.name + " Meeting Room",
+                    "description": "This is a meeting room for your " + form.instance.course.subject + " " + form.instance.course.catalog_number + " study group: \n" + form.instance.description,
                     "start": {"dateTime": start_datetime.isoformat()},
                     "end": {
                         "dateTime": (start_datetime + timedelta(minutes=60)).isoformat()
@@ -151,13 +155,15 @@ class GroupCreateView(LoginRequiredMixin, CreateView):
                     "conferenceData": {
                         "createRequest": {
                             "requestId": f"{uuid.uuid4().hex}",
-                            "conferenceSolutionKey": {"type": "hangoutsMeet"}}},
+                            "conferenceSolutionKey": {"type": "hangoutsMeet"},
+                        },
+                    },  
                 },
                 conferenceDataVersion=1
             )
             .execute()
         )
-        print(event["hangoutLink"])
+        print(event)
         return event["hangoutLink"]
 
 class GroupUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
