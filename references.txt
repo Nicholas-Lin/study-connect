@@ -1,0 +1,70 @@
+REFERENCES
+
+Title: Django
+Author:  Django Software Foundation
+Date: 9/22/20
+Code version: 3.1.3
+URL: https://www.djangoproject.com/
+Software License: BSD-3 license
+
+Title: Bootstrap
+Author:  Bootstrap team
+Date: 9/22/20
+Code version: v4.5.2
+URL: https://getbootstrap.com/
+Software License: MIT license
+
+Title: Django-Allauth
+Author:  IntenCT
+Date: 9/30/20
+Code version: 0.42.0
+URL: https://github.com/pennersr/django-allauth
+Software License: MIT license
+
+Title: Django-Heroku
+Author:  Heroku
+Date: 9/16/20
+Code version: 0.3.0
+URL: https://github.com/heroku/django-heroku
+Software License: BSD-3 license
+
+Title: Gunicorn
+Author:  Heroku
+Date: 9/16/20
+Code version: 20.0.1
+URL: https://github.com/benoitc/gunicorn
+Software License: MIT license
+
+Title: Django-crispy-forms
+Author:  Bootstrap team
+Date: 10/18/20
+Code version: 1.9.2
+URL: https://github.com/django-crispy-forms/django-crispy-forms
+Software License: MIT license
+
+Title: Django Blog Example
+Author:  Corey Schafer
+Date: 10/30/20
+URL: https://github.com/CoreyMSchafer/code_snippets/tree/master/Django_Blog
+Software License: MIT license
+
+Title: How to send emails in Django
+Author:  Data Flair team
+Date: 11/9/20
+URL: https://data-flair.training/blogs/django-send-email/
+
+Title: UUID
+Date: 11/22/20
+Code Version: v8.3.1
+URL: https://github.com/uuidjs/uuid
+Software License: MIT license
+
+Title: Google Login Tutorial
+Author: Zoe Chew
+Date: 10/5/20
+URL: https://whizzoe.medium.com/in-5-mins-set-up-google-login-to-sign-up-users-on-django-e71d5c38f5d5
+
+Title: Inline Formset Tutorial
+Author: Daniel Chen
+Date: 11/2/20
+URL: https://medium.com/@adandan01/django-inline-formsets-example-mybook-420cc4b6225d
