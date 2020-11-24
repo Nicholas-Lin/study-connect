@@ -29,8 +29,14 @@
 <article class="media content-section">
     <div class="media-body">
         <div class="article-metadata">
-            <a class="mr-2" href="{% url 'profile-detail' profile.user.username%}">{{ profile.user.username }}</a>
+            <h4><a class="mr-2" href="{% url 'profile-detail' profile.user.username%}">{{ profile.user.username }}</a>
+            </h4>
+            <em class="text-muted">
+                {{profile.year_in_school}} Year, {{profile.major}} Major</em>
         </div>
+        <p>
+            {{profile.bio}}
+        </p>
     </div>
 </article>
 {% endfor %}

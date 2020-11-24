@@ -26,8 +26,18 @@
 <article class="media content-section">
     <div class="media-body">
         <div class="article-metadata">
-            <a class="mr-2" href="{% url 'group-detail' group.id%}">{{ group.name }}</a>
+            <a class="mr-2" href="{% url 'profile-detail' group.owner.username%}">{{ group.owner}}</a>
+            <em class="text-muted">{{ group.course.subject}} {{ group.course.catalog_number}}</em>
         </div>
+        <h2><a class="article-title" href="{% url 'group-detail' group.id%}">{{ group.name }}</a></h2>
+        <p class="article-content">{{ group.description }}</p>
+        <h5>Group Members: </h5>
+        <ul>
+            {% for member in group.members.all %}
+            <li><a class="mr-2" href="{% url 'profile-detail' user.username%}">{{member.user.username}}</a></li>
+            {% endfor %}
+        </ul>
+
     </div>
 </article>
 {% endfor %}
