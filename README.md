@@ -6,6 +6,14 @@ Study Connect is our group project for "Project Option 4: Virtual Study-Buddy Fi
 
 [Try out Study Connect](https://study-buddy-finder.herokuapp.com/)
 
+## Tutorial for Grading
+1. Go to your profile and add your information! Try adding some UVA courses to your schedule as well.
+2. Go to the discussion board and make a post. Try editing and deleting the post. View some other interesting posts.
+3. Go to the group feature and create a group of your own.
+4. Go to the finder feature and find a study buddy. See if you can message them or add them to your group.
+5. In the finder feature, find a group for one of your classes and join it! 
+
+
 ## Features
 1. Profile
     - Users can add UVA courses to their profile
@@ -34,3 +42,6 @@ Study Connect is our group project for "Project Option 4: Virtual Study-Buddy Fi
 4. The system shall provide a mechanism for students to meet up virtually (no in person meet ups for this!). Options could include generating Google Meet links, a Discord bot companion app, managing Zoom IDs, etc.
     - Users can message other users by selecting the "message" button when viewing another user's profile. This allows user's to communicate and discuss when to meet up. Additionally, a unique Google Meet link is generated when a group is created.
     - We leveraged the [Google Calendar API](https://developers.google.com/calendar/v3/reference/events) to automatically generate google meet links for each group.
+
+## Notes
+- A list of references can be found in [references.txt](references.txt) file
