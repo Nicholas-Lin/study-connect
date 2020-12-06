@@ -13,7 +13,6 @@ Study Connect is our group project for "Project Option 4: Virtual Study-Buddy Fi
 4. Go to the finder feature and find a study buddy. See if you can message them or add them to your group.
 5. In the finder feature, find a group for one of your classes and join it! 
 
-
 ## Features
 1. Profile
     - Users can add UVA courses to their profile
